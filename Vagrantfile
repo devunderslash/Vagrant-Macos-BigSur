@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
 
   # Copy folder across from local machine to VM - This line was for testing my ansible playbook located - 
   # https://github.com/devunderslash/mac-setup-stripped/blob/main/README.md
-  # config.vm.provision "file", source: "./WorkMac-Playbook", destination: "~/Users/vagrant/"
+  # config.vm.provision "file", source: ".", destination: "~/Users/vagrant/"
 
   # config.vm.provision "shell", path: "~./WorkMac-Playbook/run_setup.sh"
 
