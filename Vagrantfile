@@ -15,10 +15,10 @@ Vagrant.configure("2") do |config|
   config.vm.box = "thinhho/automation-macos"
 
   # Use NFS for the shared folder
-  config.vm.synced_folder ".", "/vagrant", default: true
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
 
   # NFS needs host-only network
-  config.vm.network :private_network, ip: "172.16.2.42"
+#   config.vm.network :private_network, ip: "172.16.2.42"
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "macosx-test"
@@ -37,10 +37,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["setextradata", "macosx-test", "VBoxInternal/Devices/smc/0/Config/DeviceKey", "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"]
     vb.customize ["setextradata", "macosx-test", "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC", "1"]
     vb.customize ["setextradata", "macosx-test", "VBoxInternal2/EfiGopMode", "5"]
-  
-    # Customize the amount of memory on the VM:
-    vb.memory = "4096"
-    vb.cpus = "2"
+
   end
 
   # Copy folder across from local machine to VM - This line was for testing my ansible playbook located - 
